@@ -1,0 +1,14 @@
+,tag,meaning,rho
+s11,Ps30,HPC outlet static pressure,-0.718
+s4,T50,LPT outlet total temperature,-0.702
+s12,phi,Fuel flow / Ps30,0.693
+s7,P30,HPC outlet total pressure,0.679
+s15,BPR,Bypass ratio,-0.666
+s21,W32,LPT coolant bleed,0.657
+s20,W31,HPT coolant bleed,0.653
+s2,T24,LPC outlet total temperature,-0.629
+s17,htBleed,Bleed enthalpy,-0.629
+s3,T30,HPC outlet total temperature,-0.606
+s8,Nf,Physical fan speed,-0.574
+s13,NRf,Corrected fan speed,-0.573
+s9,Nc,Physical core speed,-0.322
