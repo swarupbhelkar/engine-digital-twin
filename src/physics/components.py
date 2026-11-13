@@ -89,7 +89,7 @@ def nozzle(flow: Flow, p_amb: float) -> dict:
     p_exit = p_crit if choked else p_amb
     t_static = float(gas.isentropic_temp(flow.t, p_exit / flow.p, flow.far))
     dh = flow.h - float(gas.enthalpy(t_static, flow.far))
-    v = np.sqrt(2 * GC * J * dh)
+    v = np.sqrt(2 * GC * J * max(dh, 1e-6))
     rho = p_exit * 144 / (R_FT * t_static)            # lbm/ft^3
     area = flow.w / (rho * v)                          # ft^2
     thrust = flow.w * v / GC + (p_exit - p_amb) * 144 * area
