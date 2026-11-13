@@ -2,7 +2,7 @@
 
 A digital twin of a two-spool turbofan that tracks component health and predicts remaining useful life (RUL). It combines a thermodynamic cycle model, sensor data, and a CAD/CFD layer.
 
-**Status:** Weeks 1-3 done: data exploration, 0D physics model, health index and RUL models.
+**Status:** Weeks 1-4 done: data exploration, 0D physics model, health index and RUL models, twin logic (sensor check, fault injection, per-cycle twin state).
 
 ## Headline result (FD001 test set, 100 engines, RUL capped at 125)
 | Model | Test RMSE (cycles) | NASA score |
@@ -18,7 +18,8 @@ Physics health features (HPC efficiency and flow-capacity loss from gas path ana
     data/raw/        NASA C-MAPSS files (FD001)
     data/processed/  feature tables (generated, not in git)
     notebooks/       01_eda.ipynb: exploration
-    src/             data_loader.py, features.py, rul_rf.py, rul_lstm.py
+    src/             data_loader.py, features.py, rul_rf.py, rul_lstm.py,
+                     sensor_check.py, fault_injection.py, twin_state.py
     src/physics/     0D cycle model and HPC health fit
     tests/           pytest checks
     reports/         notes, results CSVs, figures
@@ -35,6 +36,9 @@ Physics health features (HPC efficiency and flow-capacity loss from gas path ana
     python -m src.features             # Week 3: feature table, train + test
     python -m src.rul_rf               # random forest, about 1 minute
     python -m src.rul_lstm             # LSTM, a few minutes on CPU
+    python -m src.sensor_check         # Week 4: physics vs data sensor check
+    python -m src.fault_injection      # injected sensor faults, about 1 minute
+    python -m src.twin_state           # per-cycle twin state for the dashboard
 
 ## Data
 NASA C-MAPSS turbofan engine degradation dataset (Saxena et al., 2008), from the NASA Prognostics Data Repository. FD001: 100 training engines run to failure, 100 test engines, one operating condition, HPC degradation fault.
@@ -56,10 +60,17 @@ NASA C-MAPSS turbofan engine degradation dataset (Saxena et al., 2008), from the
 - An LSTM reading 30-cycle windows learns the wear trend from sensors alone, so physics no longer lowers its RMSE, but it still makes errors safer.
 - See reports/week3_rul_note.md.
 
+## Week 4 findings: twin logic
+- Each sensor is checked against the physics prediction from the other 6. A learned model-mismatch correction stops false alarms near end of life (52 of 100 clean engines without it, 0 with it).
+- Injected faults of 4 x sensor noise: the right sensor is named in 100 % of engines for 6 of 7 sensors (bias), within about 8 cycles. T24 is the weak spot (71 %).
+- Trusting a faulty sensor shifts predicted RUL by 10-30 cycles; with the check, 5-7.
+- Per-cycle twin state: health, wear rate, RUL with an 80 % range (76 % coverage on test), OK / WATCH / ACTION. No engine within 30 cycles of failure is marked OK.
+- See reports/week4_twin_note.md.
+
 ## Roadmap
 1. ~~Data & exploration~~
 2. ~~0D cycle model (physics)~~
 3. ~~Health index + RUL models (random forest, LSTM)~~
-4. Twin logic: physics vs data, anomalies, efficiency loss
+4. ~~Twin logic: physics vs data, anomalies, efficiency loss~~
 5. CAD cutaway + CFD blade case
 6. Streamlit dashboard + report
