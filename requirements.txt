@@ -6,3 +6,4 @@ jupyter
 streamlit
 scipy
 pytest
+torch
