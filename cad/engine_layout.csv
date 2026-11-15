@@ -1,0 +1,8 @@
+station,name,x_mm,r_hub_mm,r_tip_mm
+2c,LPC inlet,739.5,544.9,756.9
+24L,LPC exit,1435.7,550.5,688.1
+24,HPC inlet,1687.4,330.5,508.3
+30,HPC exit,2998.0,409.6,429.2
+41,HPT inlet,3291.6,395.9,442.9
+45,HPT exit,3533.1,397.7,508.3
+50,LPT exit,4367.7,503.2,811.7

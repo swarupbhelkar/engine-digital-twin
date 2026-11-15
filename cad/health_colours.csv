@@ -1,0 +1,5 @@
+label,cycle,hi,d_eta_pct,rul_pred,status,hex,rgb
+new,10.0,1.0,0.034,124.398,OK,#006837,0 104 55
+mid-wear,149.0,0.695,-0.503,58.49,WATCH,#A9DA6C,169 218 108
+now (last cycle),189.0,0.383,-0.978,29.679,ACTION,#FED683,254 214 131
+typical failure (reference),,0.0,-1.49,0.0,ACTION,#A50026,165 0 38

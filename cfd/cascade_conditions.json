@@ -1,0 +1,24 @@
+{
+  "frame": "rotor (relative). x axial, y tangential, angles from axial",
+  "inlet_total_pressure_Pa": 1056807.6,
+  "inlet_static_pressure_Pa_initial_guess": 732379.8,
+  "inlet_total_temperature_K": 600.17,
+  "inlet_flow_angle_deg": 50.826,
+  "inlet_direction_xy": [
+    0.63167,
+    0.77523
+  ],
+  "outlet_static_pressure_Pa": 860782.3,
+  "inlet_rel_mach": 0.7481,
+  "reynolds_chord": 2204000.0,
+  "turbulence_intensity_pct": 5,
+  "turbulent_viscosity_ratio": 10,
+  "chord_mm": 38.151,
+  "pitch_mm": 29.281,
+  "axial_chord_mm": 30.291,
+  "stagger_deg": 37.442,
+  "camber_deg": 26.769,
+  "exit_flow_angle_design_deg": 30.579,
+  "roughness_fouled_um": 40.0,
+  "erosion_depth_chord_frac": 0.02
+}
