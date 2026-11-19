@@ -3,3 +3,10 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 data/processed/
+# Fluent working files (results are copied to cfd/results/)
+cfd/fluent/*.dat.h5
+cfd/fluent/*.trn
+cfd/fluent/cleanup-fluent-*.bat
+cfd/**/*-rfile*.out
+# editor settings Fusion creates
+cad/**/.vscode/

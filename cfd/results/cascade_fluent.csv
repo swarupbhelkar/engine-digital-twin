@@ -1,0 +1,4 @@
+case,iterations,p0_in,p0_out,p_in,mdot,roughness_um,notes
+healthy,2776,1056808,1050885.20,731906.35,30.14983,0,smooth wall; converged to 1e-5
+fouled,3614,1056808,1041131.58,731901.42,30.15002,40,healthy mesh + sand-grain roughness 40 um (Cs 0.5); restarted from healthy
+eroded,1416,1056808,1050226.53,731897.43,30.15005,0,leading edge 2 % chord worn off; settings from setup.bc; fresh start
