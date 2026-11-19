@@ -1,0 +1,10 @@
+{
+  "autodeskProduct": "Fusion",
+  "type": "script",
+  "author": "Swarup Bhelkar",
+  "description": {
+    "": "Builds the engine digital twin cutaway from cad/engine_layout.csv"
+  },
+  "supportedOS": "windows|mac",
+  "editEnabled": true
+}

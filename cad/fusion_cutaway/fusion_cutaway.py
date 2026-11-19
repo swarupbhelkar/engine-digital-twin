@@ -10,6 +10,8 @@ What it builds (one Fusion component per part, so each can get its own colour):
   Casing     : 20 mm shell outside the core passage
   Nacelle    : 50 mm shell outside the fan
 Every part is revolved 270 deg about the engine axis, leaving a 90 deg cutaway.
+Each part is then turned 180 deg about the axis so the open quadrant faces
+up and towards the FRONT view (Z-up design).
 
 Fusion's internal unit is cm, so mm values are divided by 10.
 
@@ -103,8 +105,12 @@ def run(context):
             ui.messageBox("Open a new Fusion design first, then run the script.")
             return
         root = design.rootComponent
+        import math
+        turn = adsk.core.Matrix3D.create()     # open quadrant up and to the front
+        turn.setToRotation(math.pi, adsk.core.Vector3D.create(1, 0, 0),
+                           adsk.core.Point3D.create(0, 0, 0))
         for name, poly in polygons().items():
-            occ = root.occurrences.addNewComponent(adsk.core.Matrix3D.create())
+            occ = root.occurrences.addNewComponent(turn)
             comp = occ.component
             comp.name = name
             sk = comp.sketches.add(comp.xYConstructionPlane)
